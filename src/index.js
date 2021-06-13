@@ -21,4 +21,4 @@ const ReduxBusinessLogic = () => {
     };
 };
 
-module.exports = ReduxBusinessLogic;
+exports = ReduxBusinessLogic;
