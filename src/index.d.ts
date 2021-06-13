@@ -10,7 +10,7 @@ interface IMiddlewareHandler {
 }
 
 interface IReduxBusinessLogicResult {
-    onAction: (action: string, handler: IMiddlewareHandler) => void;
+    onAction: (actionName: string, handler: IMiddlewareHandler) => void;
     middleware: Middleware;
 }
 
