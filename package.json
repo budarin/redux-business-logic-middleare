@@ -4,7 +4,8 @@
     "description": "Business logic middleware for redux.",
     "main": "src/index.js",
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "public": "npm publish --access public"
     },
     "repository": {
         "type": "git",
