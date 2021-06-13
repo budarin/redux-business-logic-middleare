@@ -1,12 +1,21 @@
-import type { Middleware, Store } from 'redux';
+import type { Dispatch, Middleware, Store, StoreCreator } from 'redux';
+
+interface IStore {
+    dispatch: Dispatch;
+    getState: () => any;
+}
 
 interface IMiddlewareHandler {
-    (store: Pick<Store, 'getState' | 'dispatch>'>, payload: Record<string, any>): any;
+    (store: IStore, payload: Record<string, any>): any;
+}
+
+interface IReduxBusinessLogicResult {
+    onAction: (action: string, handler: IMiddlewareHandler) => void;
+    middleware: Middleware;
 }
 
 interface IReduxBusinessLogic {
-    onAction: (action: string, handler: IMiddlewareHandler) => void;
-    middleware: Middleware;
+    new (): IReduxBusinessLogicResult;
 }
 
 export declare function ReduxBusinessLogic(): IReduxBusinessLogic;
