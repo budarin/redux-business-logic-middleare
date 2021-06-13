@@ -1,0 +1,31 @@
+{
+    "name": "@budarin/redux-business-logic-middleare",
+    "version": "1.0.0",
+    "description": "Business logic middleware for redux.",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/budarin/redux-business-logic-middleare.git"
+    },
+    "keywords": [
+        "business",
+        "ligic",
+        "redux",
+        "middleware"
+    ],
+    "author": "Vadim Budarin",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/budarin/redux-business-logic-middleare/issues"
+    },
+    "homepage": "https://github.com/budarin/redux-business-logic-middleare#readme",
+    "dependencies": {
+        "jest": "^27.0.4"
+    },
+    "peerDependencies": {
+        "redux": "^4.1.0"
+    }
+}
