@@ -7,9 +7,9 @@ Using:
 app-business-ligic-middleware.js
 
 ```js
-import ReduxBusinessLogic from '@budarin/redux-business-logic-middleare';
+import { getBusinessLogicMiddleware } from '@budarin/redux-business-logic-middleare';
 
-export const { onAction, middleware } = new ReduxBusinessLogic();
+export const { onAction, middleware } = getBusinessLogicMiddleware();
 ```
 
 duck.js

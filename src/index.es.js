@@ -1,4 +1,4 @@
-export const ReduxBusinessLogic = () => {
+export const getBusinessLogicMiddleware = () => {
     const actionHandlers = new Map();
 
     return {

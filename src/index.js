@@ -1,4 +1,4 @@
-const ReduxBusinessLogic = () => {
+const getBusinessLogicMiddleware = () => {
     const actionHandlers = new Map();
 
     return {
@@ -21,4 +21,4 @@ const ReduxBusinessLogic = () => {
     };
 };
 
-exports.ReduxBusinessLogic = ReduxBusinessLogic;
+exports.getBusinessLogicMiddleware = getBusinessLogicMiddleware;

@@ -9,13 +9,13 @@ interface IMiddlewareHandler {
     (store: IStore, payload: Record<string, any>): any;
 }
 
+interface IOnAction {
+    (action: string, handler: IMiddlewareHandler): void;
+}
+
 interface IReduxBusinessLogicResult {
-    onAction: (actionName: string, handler: IMiddlewareHandler) => void;
+    onAction: IOnAction;
     middleware: Middleware;
 }
 
-interface IReduxBusinessLogic {
-    new (): IReduxBusinessLogicResult;
-}
-
-export declare const ReduxBusinessLogic: IReduxBusinessLogic;
+export declare function getBusinessLogicMiddleware(): IReduxBusinessLogicResult;
