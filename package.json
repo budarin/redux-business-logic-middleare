@@ -3,6 +3,7 @@
     "version": "1.0.4",
     "description": "Business logic middleware for redux.",
     "main": "src/index.js",
+    "module": "src/index.js",
     "scripts": {
         "test": "jest",
         "public": "npm publish --access public"

@@ -1,4 +1,4 @@
-const ReduxBusinessLogic = () => {
+export const ReduxBusinessLogic = () => {
     const actionHandlers = new Map();
 
     return {
@@ -20,5 +20,3 @@ const ReduxBusinessLogic = () => {
             },
     };
 };
-
-exports = ReduxBusinessLogic;

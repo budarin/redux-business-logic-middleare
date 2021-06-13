@@ -18,6 +18,4 @@ interface IReduxBusinessLogic {
     new (): IReduxBusinessLogicResult;
 }
 
-declare const ReduxBusinessLogic: IReduxBusinessLogic;
-
-export default ReduxBusinessLogic;
+export declare const ReduxBusinessLogic: IReduxBusinessLogic;
