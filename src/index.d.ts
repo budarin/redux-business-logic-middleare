@@ -13,8 +13,13 @@ interface IOnAction {
     (action: string, handler: IMiddlewareHandler): void;
 }
 
+interface IOffAction {
+    (action: string): void;
+}
+
 interface IReduxBusinessLogicResult {
     onAction: IOnAction;
+    offAction: IOffAction;
     middleware: Middleware;
 }
 

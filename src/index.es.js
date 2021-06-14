@@ -6,6 +6,10 @@ export const getBusinessLogicMiddleware = () => {
             actionHandlers.set(actionId, handler);
         },
 
+        offAction: (actionId) => {
+            actionHandlers.delete(actionId);
+        },
+
         middleware:
             ({ getState, dispatch }) =>
             (next) =>
