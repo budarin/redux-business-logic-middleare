@@ -17,40 +17,43 @@ duck.js
 ```js
 import { onAction } = './app-business-ligic-middleware';
 
-const GET_EMPLOYER = 'GET_EMPLOYER';
+const GET_EMPLOYER = 'ADD_TODO';
 
-const FETCHING = 'FETCHING';
+const WAITING = 'WAITING';
 const SUCCESS = 'SUCCESS';
 const ERROR = 'ERROR';
 
 
-export const getEmployee = (id) => ({
-    type: GET_EMPLOYER,
-    payload: { id }
+export const getEmployee = (todo) => ({
+    type: ADD_TODO,
+    payload: { todo }
+    meta: {
+        bl: true  // it's important for intercepting with business-logic middleware
+    }
 });
 
 
-onAction(GET_EMPLOYER, ({getState, dispatch}, payload) => {
-    dispatch({ type: FETCHING });
+onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
+    dispatch({ type: WAITING });
     try{
-        fetch('/eployes', params: payload);
+        const todo = await fetch('/todo', params: payload);
+
+        // ADD_TODO will be dispatched straight to the store without meta info
+        dispatch({ type: ADD_TODO, todo });
+
         dispatch({ type: SUCCESS });
     } catch(ex) {
         dispatch({ type: ERROR, error: err });
     }
 })
-
-...
-
 ```
 
-Add midleware to store's middlewares
+Add midleware to stores middlewares
 
 ```js
 import { createStore } from 'redux'
 import { middleware as blMiddleware } = './app-business-ligic-middleware';
 
-...
+
 const store = createStore(reducers, initialState, applyMiddleware(blMiddleware));
-...
 ```

@@ -16,7 +16,7 @@ export const getBusinessLogicMiddleware = () => {
             (action) => {
                 const handler = actionHandlers.get(action.type);
 
-                if (!handler) {
+                if (!handler || (handler && !action.meta.bl)) {
                     return next(action);
                 }
 
