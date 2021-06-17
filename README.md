@@ -41,6 +41,18 @@ onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
         dispatch({ type: ERROR, error: err });
     }
 })
+
+export default const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'ADD_TODO_ITEM': {.
+            ..
+        }
+        default:
+            return state;
+    }
+};
+
+...
 ```
 
 Add midleware to stores middlewares
