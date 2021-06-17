@@ -1,6 +1,6 @@
 {
     "name": "@budarin/redux-business-logic-middleare",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "description": "Business logic middleware for redux.",
     "main": "src/index.js",
     "module": "src/index.es.js",

@@ -1,4 +1,4 @@
-import type { Dispatch, Middleware, Store, StoreCreator } from 'redux';
+import type { Dispatch, Middleware } from 'redux';
 
 interface IStore {
     dispatch: Dispatch;
@@ -10,11 +10,11 @@ interface IMiddlewareHandler {
 }
 
 interface IOnAction {
-    (action: string, handler: IMiddlewareHandler): void;
+    (actionId: string, handler: IMiddlewareHandler): void;
 }
 
 interface IOffAction {
-    (action: string): void;
+    (actionId: string): void;
 }
 
 interface IReduxBusinessLogicResult {

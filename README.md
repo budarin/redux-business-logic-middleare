@@ -19,6 +19,7 @@ import { onAction } = './app-business-ligic-middleware';
 
 const GET_EMPLOYER = 'ADD_TODO';
 
+const GET_EMPLOYER = 'ADD_TODO_ITEM';
 const WAITING = 'WAITING';
 const SUCCESS = 'SUCCESS';
 const ERROR = 'ERROR';
@@ -27,9 +28,6 @@ const ERROR = 'ERROR';
 export const getEmployee = (todo) => ({
     type: ADD_TODO,
     payload: { todo }
-    meta: {
-        bl: true  // it's important for intercepting with business-logic middleware
-    }
 });
 
 
@@ -37,10 +35,7 @@ onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
     dispatch({ type: WAITING });
     try{
         const todo = await fetch('/todo', params: payload);
-
-        // ADD_TODO will be dispatched straight to the store without meta info
-        dispatch({ type: ADD_TODO, todo });
-
+        dispatch({ type: ADD_TODO_ITEM, todo });
         dispatch({ type: SUCCESS });
     } catch(ex) {
         dispatch({ type: ERROR, error: err });
