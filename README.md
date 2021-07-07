@@ -15,7 +15,7 @@ export const { onAction, middleware } = getBusinessLogicMiddleware();
 duck.js
 
 ```js
-import { onAction } = './app-business-ligic-middleware';
+import { onAction } = './app-business-logic-middleware';
 
 const GET_EMPLOYER = 'ADD_TODO';
 
