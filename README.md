@@ -59,8 +59,8 @@ Add midleware to stores middlewares
 
 ```js
 import { createStore } from 'redux'
-import { middleware as blMiddleware } = './app-business-ligic-middleware';
+import { middleware as bMiddleware } = './app-business-ligic-middleware';
 
 
-const store = createStore(reducers, initialState, applyMiddleware(blMiddleware));
+const store = createStore(reducers, initialState, applyMiddleware(bMiddleware));
 ```
