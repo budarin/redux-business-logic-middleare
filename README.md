@@ -37,7 +37,7 @@ onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
         const todo = await fetch('/employers', params: employer);
         dispatch({ type: ADD_EMPLOYER, todo });
         dispatch({ type: SUCCESS });
-    } catch(ex) {
+    } catch(err) {
         dispatch({ type: ERROR, error: err });
     }
 })
