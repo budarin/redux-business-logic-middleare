@@ -17,25 +17,24 @@ duck.js
 ```js
 import { onAction } = './app-business-logic-middleware';
 
-const GET_EMPLOYER = 'ADD_TODO';
-
-const GET_EMPLOYER = 'ADD_TODO_ITEM';
+const GET_EMPLOYER = 'GET_EMPLOYER';
+const ADD_EMPLOYER = 'ADD_EMPLOYER';
 const WAITING = 'WAITING';
 const SUCCESS = 'SUCCESS';
 const ERROR = 'ERROR';
 
 
-export const getEmployee = (todo) => ({
-    type: ADD_TODO,
-    payload: { todo }
+export const getEmployee = (employer) => ({
+    type: GET_EMPLOYER,
+    payload: { employer }
 });
 
 
 onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
     dispatch({ type: WAITING });
     try{
-        const todo = await fetch('/todo', params: payload);
-        dispatch({ type: ADD_TODO_ITEM, todo });
+        const todo = await fetch('/employers', params: payload);
+        dispatch({ type: ADD_EMPLOYER, todo });
         dispatch({ type: SUCCESS });
     } catch(ex) {
         dispatch({ type: ERROR, error: err });
@@ -44,7 +43,7 @@ onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
 
 export default const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'ADD_TODO_ITEM': {.
+        case 'ADD_EMPLOYER': {.
             ..
         }
         default:
