@@ -24,7 +24,7 @@
         "url": "https://github.com/budarin/redux-business-logic-middleare/issues"
     },
     "homepage": "https://github.com/budarin/redux-business-logic-middleare#readme",
-    "dependencies": {
+    "devDependencies": {
         "jest": "^27.2.3"
     },
     "peerDependencies": {
