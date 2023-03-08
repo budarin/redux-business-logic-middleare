@@ -50,7 +50,7 @@ export const getEmployee = ({ id }) => ({
 });
 
 
-onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
+export const getEmployerBL = onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
     const { id } = payload
 
     dispatch({ type: WAITING });
@@ -104,4 +104,12 @@ import { middleware as bMiddleware } = './app-business-logic-middleware';
 
 
 const store = createStore(reducers, initialState, applyMiddleware(bMiddleware));
+```
+
+To remove bussines-rule from processing
+
+```js
+export const { offAction } = getBusinessLogicMiddleware();
+
+offAction(getEmployerBL);
 ```
