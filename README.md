@@ -24,18 +24,18 @@ const SUCCESS = 'SUCCESS';
 const ERROR = 'ERROR';
 
 
-export const getEmployee = (employer) => ({
+export const getEmployee = ({ id }) => ({
     type: GET_EMPLOYER,
-    payload: { employer }
+    payload: { id }
 });
 
 
 onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
-    const { employer } = payload
+    const { id } = payload
     dispatch({ type: WAITING });
     try{
-        const todo = await fetch('/employers', params: employer);
-        dispatch({ type: ADD_EMPLOYER, todo });
+        const employerInfo = await fetch('/employers', params: { id );
+        dispatch({ type: ADD_EMPLOYER, employerInfo });
         dispatch({ type: SUCCESS });
     } catch(err) {
         dispatch({ type: ERROR, error: err });
@@ -45,6 +45,18 @@ onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
 export default const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_EMPLOYER': {.
+            ..
+        }
+
+        case 'WAITING': {.
+            ..
+        }
+
+        case 'SUCCESS': {.
+            ..
+        }
+
+        case 'ERROR': {.
             ..
         }
         default:
