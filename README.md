@@ -50,7 +50,7 @@ export const getEmployee = ({ id }) => ({
 });
 
 
-export const getEmployerBL = onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
+onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
     const { id } = payload
 
     dispatch({ type: WAITING });
@@ -111,5 +111,5 @@ To remove bussines-rule from processing
 ```js
 export const { offAction } = getBusinessLogicMiddleware();
 
-offAction(getEmployerBL);
+offAction(GET_EMPLOYER);
 ```
