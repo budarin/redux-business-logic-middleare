@@ -6,7 +6,7 @@
     "module": "src/index.es.js",
     "scripts": {
         "test": "jest",
-        "publish": "yarn publish"
+        "do publish": "yarn publish"
     },
     "repository": {
         "type": "git",
