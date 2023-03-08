@@ -2,12 +2,27 @@
 
 Middleware for processing business login in redux application.
 
+## Instllation
+
+Using npm
+
+```shell
+npm install --save-dev @budarin/redux-business-logic-middleare
+```
+
+Using yarn
+
+```shell
+yarn add -D @budarin/redux-business-logic-middleare
+```
+
+## Using:
+
 Imagine downloading information about an employer by its id: 
 - the user enters/selects the employer id and presses the "Get information about the employer" button
 - the button click handler calls action creator getEmployee with employer's id and sends the received action to the store with dispatch
 - app-business-logic-middleware intercepts the action and processes it: requesting data from the backend and placing the received information in the store
 
-Using:
 
 app-business-logic-middleware.js
 
