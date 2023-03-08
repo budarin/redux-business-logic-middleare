@@ -16,7 +16,7 @@ const getBusinessLogicMiddleware = () => {
             (action) => {
                 const handler = actionHandlers.get(action.type);
 
-                if (!handler || (handler && !action.meta.bl)) {
+                if (!handler) {
                     return next(action);
                 }
 
