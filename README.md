@@ -34,10 +34,17 @@ onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
     const { id } = payload
 
     dispatch({ type: WAITING });
-    
+
     try{
-        const employerInfo = await fetch('/employers', params: { id } );
-        dispatch({ type: ADD_EMPLOYER, employerInfo });
+        const response = await fetch('/employers', params: { id } );
+
+        if (response.ok) {
+            let employerInfo = await response.json();
+            dispatch({ type: ADD_EMPLOYER, employerInfo });
+        } else {
+            dispatch({ type: ERROR, error: response.status });
+        }
+
         dispatch({ type: SUCCESS });
     } catch(err) {
         dispatch({ type: ERROR, error: err });
