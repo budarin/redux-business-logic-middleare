@@ -29,7 +29,7 @@ app-business-logic-middleware.js
 ```js
 import { getBusinessLogicMiddleware } from '@budarin/redux-business-logic-middleare';
 
-export const { onAction, middleware } = getBusinessLogicMiddleware();
+export const { onAction, middleware, offAction } = getBusinessLogicMiddleware();
 ```
 
 duck.js
@@ -109,7 +109,7 @@ const store = createStore(reducers, initialState, applyMiddleware(bMiddleware));
 To remove bussines-rule from processing
 
 ```js
-export const { offAction } = getBusinessLogicMiddleware();
+import { offAction } = './app-business-logic-middleware';
 
 offAction(GET_EMPLOYER);
 ```
