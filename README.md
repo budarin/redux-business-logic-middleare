@@ -59,19 +59,19 @@ onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
 export default const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_EMPLOYER': {
-            ..
+            ...
         }
 
         case 'WAITING': {
-            ..
+            ...
         }
 
         case 'SUCCESS': {
-            ..
+            ...
         }
 
         case 'ERROR': {
-            ..
+            ...
         }
         default:
             return state;
