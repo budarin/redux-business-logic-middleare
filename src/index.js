@@ -8,7 +8,7 @@ function offAction(actionId) {
     actionHandlers.delete(actionId);
 }
 
-const bussinesMiddleware =
+const bussinesLogicMiddleware =
     ({ getState, dispatch }) =>
     (next) =>
     (action) => {
@@ -24,5 +24,5 @@ const bussinesMiddleware =
 exports.getBusinessLogicMiddleware = {
     onAction,
     offAction,
-    bussinesMiddleware,
+    bussinesLogicMiddleware,
 };

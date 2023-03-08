@@ -8,7 +8,7 @@ export function offAction(actionId) {
     actionHandlers.delete(actionId);
 }
 
-export const bussinesMiddleware =
+export const bussinesLogicMiddleware =
     ({ getState, dispatch }) =>
     (next) =>
     (action) => {
