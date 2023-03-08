@@ -32,9 +32,11 @@ export const getEmployee = ({ id }) => ({
 
 onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
     const { id } = payload
+
     dispatch({ type: WAITING });
+    
     try{
-        const employerInfo = await fetch('/employers', params: { id );
+        const employerInfo = await fetch('/employers', params: { id } );
         dispatch({ type: ADD_EMPLOYER, employerInfo });
         dispatch({ type: SUCCESS });
     } catch(err) {
