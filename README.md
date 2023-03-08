@@ -1,10 +1,15 @@
 # redux-business-logic-middleare
 
-Middleware for processing business login in redux application
+Middleware for processing business login in redux application.
+
+Imagine downloading information about an employer by its id: 
+- the user enters/selects the employer id and presses the "Get information about the employer" button
+- the button click handler calls action creator getEmployee employer's id and sends the received action to the store with dispatch
+- app-business-logic-middleware intercepts the action and processes it: requesting data from the backend and placing the received information in the store
 
 Using:
 
-app-business-ligic-middleware.js
+app-business-logic-middleware.js
 
 ```js
 import { getBusinessLogicMiddleware } from '@budarin/redux-business-logic-middleare';
@@ -53,19 +58,19 @@ onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
 
 export default const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'ADD_EMPLOYER': {.
+        case 'ADD_EMPLOYER': {
             ..
         }
 
-        case 'WAITING': {.
+        case 'WAITING': {
             ..
         }
 
-        case 'SUCCESS': {.
+        case 'SUCCESS': {
             ..
         }
 
-        case 'ERROR': {.
+        case 'ERROR': {
             ..
         }
         default:
@@ -80,7 +85,7 @@ Add midleware to stores middlewares
 
 ```js
 import { createStore } from 'redux'
-import { middleware as bMiddleware } = './app-business-ligic-middleware';
+import { middleware as bMiddleware } = './app-business-logic-middleware';
 
 
 const store = createStore(reducers, initialState, applyMiddleware(bMiddleware));
