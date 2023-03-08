@@ -23,19 +23,10 @@ Imagine downloading information about an employer by its id:
 - the button click handler calls action creator getEmployee with employer's id and sends the received action to the store with dispatch
 - app-business-logic-middleware intercepts the action and processes it: requesting data from the backend and placing the received information in the store
 
-
-app-business-logic-middleware.js
-
-```js
-import { getBusinessLogicMiddleware } from '@budarin/redux-business-logic-middleare';
-
-export const { onAction, middleware, offAction } = getBusinessLogicMiddleware();
-```
-
 duck.js
 
 ```js
-import { onAction } = './app-business-logic-middleware';
+import { onAction } = '@budarin/redux-business-logic-middleare';
 
 const GET_EMPLOYER = 'GET_EMPLOYER';
 const ADD_EMPLOYER = 'ADD_EMPLOYER';
@@ -100,16 +91,16 @@ Add midleware to stores middlewares
 
 ```js
 import { createStore } from 'redux'
-import { middleware as bMiddleware } = './app-business-logic-middleware';
+import { bussinesMiddleware } =  '@budarin/redux-business-logic-middleare';
 
 
-const store = createStore(reducers, initialState, applyMiddleware(bMiddleware));
+const store = createStore(reducers, initialState, applyMiddleware(bussinesMiddleware));
 ```
 
 To remove bussines-rule from processing
 
 ```js
-import { offAction } = './app-business-logic-middleware';
+import { offAction } =  '@budarin/redux-business-logic-middleare';
 
 offAction(GET_EMPLOYER);
 ```
