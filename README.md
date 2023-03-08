@@ -45,7 +45,7 @@ onAction(GET_EMPLOYER, async ({getState, dispatch}, payload) => {
     const { id } = payload
 
     dispatch({ type: WAITING });
-    
+
     try{
         const response = await fetch('/employers', params: { id } );
 
@@ -91,10 +91,10 @@ Add midleware to stores middlewares
 
 ```js
 import { createStore } from 'redux'
-import { bussinesMiddleware } =  '@budarin/redux-business-logic-middleare';
+import { bussinesLogicMiddleware } =  '@budarin/redux-business-logic-middleare';
 
 
-const store = createStore(reducers, initialState, applyMiddleware(bussinesMiddleware));
+const store = createStore(reducers, initialState, applyMiddleware(bussinesLogicMiddleware));
 ```
 
 To remove bussines-rule from processing
