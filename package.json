@@ -6,7 +6,7 @@
     "module": "src/index.es.js",
     "scripts": {
         "test": "jest",
-        "public": "npm publish --access public"
+        "publish": "npm publish --access public"
     },
     "repository": {
         "type": "git",
