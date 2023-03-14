@@ -20,7 +20,7 @@ yarn add -D @budarin/redux-business-logic-middleare
 
 Let's implement a simple business rule for Todo “the name of todo must begin with a letter”.
 
-Let's describe the essence of Todo — its constants, actions, business rules and a redeser in accordance with the concept of (ducks)[https://github.com/erikras/ducks-modular-redux].
+Let's describe the essence of Todo — its constants, actions, business rules and a redeser in accordance with the concept of [ducks](https://github.com/erikras/ducks-modular-redux).
 
 `./ducks/todo.js`
 
