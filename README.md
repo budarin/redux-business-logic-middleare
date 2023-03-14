@@ -18,65 +18,46 @@ yarn add -D @budarin/redux-business-logic-middleare
 
 ## Using:
 
-Imagine downloading information about an employer by its id: 
-- the user enters/selects the employer id and presses the "Get information about the employer" button
-- the button click handler calls action creator getEmployee with employer's id and sends the received action to the store with dispatch
-- app-business-logic-middleware intercepts the action and processes it: requesting data from the backend and placing the received information in the store
+Let's implement a simple business rule for Todo “the name of todo must begin with a letter”.
 
-duck.js
+Let's describe the essence of Todo — its constants, actions, business rules and a redeser in accordance with the concept of (ducks)[https://github.com/erikras/ducks-modular-redux].
+
+`./ducks/todo.js`
 
 ```js
 import { onAction } = '@budarin/redux-business-logic-middleare';
 
-const GET_EMPLOYER = 'GET_EMPLOYER';
-const ADD_EMPLOYER = 'ADD_EMPLOYER';
-const WAITING = 'WAITING';
-const SUCCESS = 'SUCCESS';
-const ERROR = 'ERROR';
+export const ADD_TODO = 'TODO/ADD_TODO';
+const ERROR = 'TODO/ERROR';
 
-
-export const getEmployee = ({ id }) => ({
-    type: GET_EMPLOYER,
-    payload: { id }
+export const addTodo = ( todo ) => ({
+    type: ADD_TODO,
+    payload: { todo }
 });
 
+// let's add our business rule
+onAction(ADD_TODO, (store, next, action) => {
 
-onAction(GET_EMPLOYER, async ({getState, dispatch}, next, action) => {
-    const { id } = action.payload
-
-    dispatch({ type: WAITING });
-
-    try{
-        const response = await fetch('/employers', params: { id } );
-
-        if (response.ok) {
-            let employerInfo = await response.json();
-
-            dispatch({ type: ADD_EMPLOYER, employerInfo });
-            dispatch({ type: SUCCESS });
-        } else {
-            dispatch({ type: ERROR, error: response.status });
-        }
-    } catch(err) {
-        dispatch({ type: ERROR, error: err });
+    // if the 1st character is a digit:
+    // we will not send the action further
+    // but we will send a new action with an error to the Store
+    if (isNaN(parseInt(action.payload.todo[0])) === false) {
+        return store.dispatch({
+          type: ERROR, 
+          payload: 'Todo должен начинаться с символа' 
+        });
     }
+
+    // otherwise, we pass the action to the next middleware
+    return next(action);
 })
 
 export default const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'ADD_EMPLOYER': {
+        case 'TODO/ADD_TODO': {
             ...
         }
-
-        case 'WAITING': {
-            ...
-        }
-
-        case 'SUCCESS': {
-            ...
-        }
-
-        case 'ERROR': {
+        case 'TODO/ERROR': {
             ...
         }
         default:
@@ -90,17 +71,28 @@ export default const reducer = (state = initialState, action) => {
 Add midleware to stores middlewares
 
 ```js
-import { createStore } from 'redux'
-import { bussinesLogicMiddleware } =  '@budarin/redux-business-logic-middleare';
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { bussinesLogicMiddleware } = '@budarin/redux-business-logic-middleare';
+import todoReducer from '../ducks/todo.js'
 
+const reducers = combineReducers(
+    ...
+    todoReducer,
+    ...
+);
 
-const store = createStore(reducers, initialState, applyMiddleware(bussinesLogicMiddleware));
+const store = createStore(
+    reducers, 
+    initialState, 
+    applyMiddleware(bussinesLogicMiddleware)
+);
 ```
 
 To remove bussines-rule from processing
 
 ```js
-import { offAction } =  '@budarin/redux-business-logic-middleare';
+import { offAction } = '@budarin/redux-business-logic-middleare';
+import { ADD_TODO } from '../ducks/todo.js'
 
-offAction(GET_EMPLOYER);
+offAction(ADD_TODO);
 ```
