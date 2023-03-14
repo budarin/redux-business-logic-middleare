@@ -9,7 +9,7 @@ export function offAction(actionId) {
 }
 
 export const bussinesLogicMiddleware =
-    ({ getState, dispatch }) =>
+    (store) =>
     (next) =>
     (action) => {
         const handler = actionHandlers.get(action.type);
@@ -18,5 +18,5 @@ export const bussinesLogicMiddleware =
             return next(action);
         }
 
-        return handler({ getState, dispatch }, action.payload);
+        return handler(store, action);
     };
