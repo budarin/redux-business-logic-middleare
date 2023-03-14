@@ -39,8 +39,8 @@ export const addTodo = ( todo ) => ({
 onAction(ADD_TODO, (store, next, action) => {
 
     // if the 1st character is a digit:
-    // we will not send the action further
-    // but we will send a new action with an error to the Store
+    // we will not send the action further to the Store
+    // but we will send a new action with an error
     if (isNaN(parseInt(action.payload.todo[0])) === false) {
         return store.dispatch({
           type: ERROR, 
