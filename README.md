@@ -41,7 +41,7 @@ export const getEmployee = ({ id }) => ({
 });
 
 
-onAction(GET_EMPLOYER, async ({getState, dispatch}, action) => {
+onAction(GET_EMPLOYER, async ({getState, dispatch}, next, action) => {
     const { id } = action.payload
 
     dispatch({ type: WAITING });

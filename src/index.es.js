@@ -18,5 +18,5 @@ export const bussinesLogicMiddleware =
             return next(action);
         }
 
-        return handler(store, action);
+        return handler(store, next, action);
     };
