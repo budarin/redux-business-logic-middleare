@@ -8,7 +8,7 @@ export function offAction(actionId) {
     actionHandlers.delete(actionId);
 }
 
-export function removeAllBussinesRules(params) {
+export function removeAllBusinesRules(params) {
     actionHandlers.clear();
 }
 
