@@ -8,7 +8,7 @@ function offAction(actionId) {
     actionHandlers.delete(actionId);
 }
 
-function removeAllBusinesRules(params) {
+function removeAllBusinessRules(params) {
     actionHandlers.clear()
 }
 
@@ -28,6 +28,6 @@ const bussinesLogicMiddleware =
 exports.getBusinessLogicMiddleware = {
     onAction,
     offAction,
-    removeAllBusinesRules,
+    removeAllBusinessRules,
     bussinesLogicMiddleware,
 };
