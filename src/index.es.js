@@ -8,6 +8,10 @@ export function offAction(actionId) {
     actionHandlers.delete(actionId);
 }
 
+export function removeAllBussinesRules(params) {
+    actionHandlers.clear();
+}
+
 export const bussinesLogicMiddleware =
     (store) =>
     (next) =>
