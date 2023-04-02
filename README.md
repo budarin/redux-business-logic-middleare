@@ -28,8 +28,8 @@ Let's describe the essence of Todo — its constants, actions, business rules an
 import { addTodo } from 'src/client/services/api'
 import { onAction } from'@budarin/redux-business-logic-middleare';
 
-export const ADD_TODO = 'TODO/ADD_TODO';
 const ERROR = 'TODO/ERROR';
+export const ADD_TODO = 'TODO/ADD_TODO';
 
 export const addTodo = ( todo ) => ({
     type: ADD_TODO,
@@ -39,7 +39,7 @@ export const addTodo = ( todo ) => ({
 // let's add our business rule
 onAction(ADD_TODO, (store, next, action) => {
     // call the API method to send todo to the server
-    void addTodo(action.payload).catch((error) => console.error(error) });
+    void addTodo(action.payload).catch((error) => console.error(error) );
 
     // otherwise, we pass the action to the next middleware
     return next(action);
@@ -64,9 +64,9 @@ export default const reducer = (state = initialState, action) => {
 Add midleware to stores middlewares
 
 ```js
+import todoReducer from '../ducks/todo.js'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { bussinesLogicMiddleware } from '@budarin/redux-business-logic-middleare';
-import todoReducer from '../ducks/todo.js'
 
 const reducers = combineReducers(
     ...
@@ -84,8 +84,8 @@ const store = createStore(
 To remove bussines-rule from processing
 
 ```js
-import { offAction } from '@budarin/redux-business-logic-middleare';
 import { ADD_TODO } from '../ducks/todo.js'
+import { offAction } from '@budarin/redux-business-logic-middleare';
 
 offAction(ADD_TODO);
 ```
