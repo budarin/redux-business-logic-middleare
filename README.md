@@ -35,14 +35,18 @@ export const addTodo = ( todo ) => ({
     payload: { todo }
 });
 
-// let's add our business rule
-onAction(ADD_TODO, (store, next, action) => {
+// our business rule
+export const addTodoMiddleware = (store, next, action) => {
     // call the API method to send todo to the server
     void addTodo(action.payload).catch((error) => console.error(error) );
 
-    // otherwise, we pass the action to the next middleware
+     // otherwise, we pass the action to the next middleware
     return next(action);
-})
+}
+
+// let's add the business rule
+onAction(ADD_TODO, addTodoMiddleware)
+
 
 export default const reducer = (state = initialState, action) => {
     switch (action.type) {
