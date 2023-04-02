@@ -25,7 +25,7 @@ Let's describe the essence of Todo — its constants, actions, business rules an
 `./ducks/todo.js`
 
 ```js
-import { addTodo } from 'src/client/services/api'
+import { addTodo } from 'src/services/api'
 import { onAction } from'@budarin/redux-business-logic-middleare';
 
 export const ADD_TODO = 'TODO/ADD_TODO';
