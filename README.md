@@ -18,7 +18,7 @@ yarn add -D @budarin/redux-business-logic-middleare
 
 ## Using:
 
-Let's implement a simple business rule for Todo: “the name of todo must begin with a letter”.
+Let's implement a simple business rule for Todo: “when creating a todo, send the todo to the server and to the redux repository”.
 
 Let's describe the essence of Todo — its constants, actions, business rules and a redeser in accordance with the concept of [ducks](https://github.com/erikras/ducks-modular-redux).
 
