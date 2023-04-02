@@ -92,7 +92,7 @@ offAction(ADD_TODO);
 To remove all bussines-rules from processing
 
 ```js
-import { removeAllBusinessRules } = '@budarin/redux-business-logic-middleare';
+import { removeAllBusinessRules } from '@budarin/redux-business-logic-middleare';
 
 removeAllBusinessRules();
 ```
