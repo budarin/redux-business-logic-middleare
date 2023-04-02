@@ -25,7 +25,8 @@ Let's describe the essence of Todo — its constants, actions, business rules an
 `./ducks/todo.js`
 
 ```js
-import { onAction } = '@budarin/redux-business-logic-middleare';
+import { addTodo } from 'src/client/services/api'
+import { onAction } from'@budarin/redux-business-logic-middleare';
 
 export const ADD_TODO = 'TODO/ADD_TODO';
 const ERROR = 'TODO/ERROR';
@@ -37,16 +38,8 @@ export const addTodo = ( todo ) => ({
 
 // let's add our business rule
 onAction(ADD_TODO, (store, next, action) => {
-
-    // if the 1st character is a digit:
-    // we will not send the action further to the Store
-    // but we will send a new action with an error
-    if (isNaN(parseInt(action.payload.todo[0])) === false) {
-        return store.dispatch({
-          type: ERROR, 
-          payload: 'Todo должен начинаться с символа' 
-        });
-    }
+    // calli the API method to send todo to the server
+    void addTodo(action.payload);
 
     // otherwise, we pass the action to the next middleware
     return next(action);
@@ -72,7 +65,7 @@ Add midleware to stores middlewares
 
 ```js
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { bussinesLogicMiddleware } = '@budarin/redux-business-logic-middleare';
+import { bussinesLogicMiddleware } from '@budarin/redux-business-logic-middleare';
 import todoReducer from '../ducks/todo.js'
 
 const reducers = combineReducers(
@@ -91,7 +84,7 @@ const store = createStore(
 To remove bussines-rule from processing
 
 ```js
-import { offAction } = '@budarin/redux-business-logic-middleare';
+import { offAction } from '@budarin/redux-business-logic-middleare';
 import { ADD_TODO } from '../ducks/todo.js'
 
 offAction(ADD_TODO);
