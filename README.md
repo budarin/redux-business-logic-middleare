@@ -28,7 +28,6 @@ Let's describe the essence of Todo — its constants, actions, business rules an
 import { addTodo } from 'src/client/services/api'
 import { onAction } from'@budarin/redux-business-logic-middleare';
 
-const ERROR = 'TODO/ERROR';
 export const ADD_TODO = 'TODO/ADD_TODO';
 
 export const addTodo = ( todo ) => ({
@@ -48,9 +47,6 @@ onAction(ADD_TODO, (store, next, action) => {
 export default const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'TODO/ADD_TODO': {
-            ...
-        }
-        case 'TODO/ERROR': {
             ...
         }
         default:
