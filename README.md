@@ -53,8 +53,6 @@ export default const reducer = (state = initialState, action) => {
             return state;
     }
 };
-
-...
 ```
 
 Add midleware to stores middlewares
