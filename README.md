@@ -38,7 +38,7 @@ export const addTodo = ( todo ) => ({
 
 // let's add our business rule
 onAction(ADD_TODO, (store, next, action) => {
-    // calli the API method to send todo to the server
+    // call the API method to send todo to the server
     void addTodo(action.payload);
 
     // otherwise, we pass the action to the next middleware
