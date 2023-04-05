@@ -32,7 +32,7 @@ const SET_ERROR = 'TODO/SET_ERROR';
 export const ADD_TODO = 'TODO/ADD_TODO';
 
 const setError = (error) => ({
-    rtpe: SET_ERROR,
+    type: SET_ERROR,
     error
 })
 
