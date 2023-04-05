@@ -25,13 +25,13 @@ Let's describe the essence of Todo — its constants, actions, business rules an
 `./ducks/todo.js`
 
 ```js
-import { addTodo } from 'src/services/api'
+import { sendTodo } from 'src/services/api'
 import { onAction } from'@budarin/redux-business-logic-middleare';
 
 const SET_ERROR = 'TODO/SET_ERROR';
 export const ADD_TODO = 'TODO/ADD_TODO';
 
-const setError = (error) => ({
+export const setError = (error) => ({
     type: SET_ERROR,
     payload: error
 })
@@ -45,7 +45,7 @@ export const addTodo = ( todo ) => ({
 export const addTodoMiddleware = async (store, next, action) => {
     // call the API method to send todo to the server
     try {
-        await addTodo(action.payload);
+        await sendTodo(action.payload);
     } catch(error) {
         return store.dispatch(setError(error));
     }
