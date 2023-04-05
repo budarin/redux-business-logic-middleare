@@ -33,12 +33,12 @@ export const ADD_TODO = 'TODO/ADD_TODO';
 
 const setError = (error) => ({
     type: SET_ERROR,
-    error
+    payload: error
 })
 
 export const addTodo = ( todo ) => ({
     type: ADD_TODO,
-    payload: { todo }
+    payload: todo 
 });
 
 // our business rule
