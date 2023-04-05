@@ -28,7 +28,13 @@ Let's describe the essence of Todo — its constants, actions, business rules an
 import { addTodo } from 'src/services/api'
 import { onAction } from'@budarin/redux-business-logic-middleare';
 
+const SET_ERROR = 'TODO/SET_ERROR';
 export const ADD_TODO = 'TODO/ADD_TODO';
+
+const setError = (error) => ({
+    rtpe: SET_ERROR,
+    error
+})
 
 export const addTodo = ( todo ) => ({
     type: ADD_TODO,
@@ -36,9 +42,13 @@ export const addTodo = ( todo ) => ({
 });
 
 // our business rule
-export const addTodoMiddleware = (store, next, action) => {
+export const addTodoMiddleware = async (store, next, action) => {
     // call the API method to send todo to the server
-    void addTodo(action.payload).catch((error) => console.error(error) );
+    try {
+        await addTodo(action.payload);
+    } catch(error) {
+        return store.dispatch(setError(error));
+    }
 
      // otherwise, we pass the action to the next middleware
     return next(action);
@@ -50,7 +60,10 @@ onAction(ADD_TODO, addTodoMiddleware)
 
 export default const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'TODO/ADD_TODO': {
+        case ADD_TODO: {
+            ...
+        }
+        case SET_ERROR {
             ...
         }
         default:
