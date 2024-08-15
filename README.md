@@ -1,32 +1,32 @@
-# redux-bussiness-logic-middleare
+# redux-business-logic-middleare
 
-Middleware for processing bussiness login in redux application.
+Middleware for processing business login in redux application.
 
 ## Instllation
 
 Using npm
 
 ```shell
-npm install --save-dev @budarin/redux-bussiness-logic-middleare
+npm install --save-dev @budarin/redux-business-logic-middleare
 ```
 
 Using yarn
 
 ```shell
-yarn add -D @budarin/redux-bussiness-logic-middleare
+yarn add -D @budarin/redux-business-logic-middleare
 ```
 
 ## Using:
 
-Let's implement a simple bussiness rule for Todo: “when creating a todo, send the todo to the server and to the redux store”.
+Let's implement a simple business rule for Todo: “when creating a todo, send the todo to the server and to the redux store”.
 
-Let's describe the essence of Todo — its constants, actions, bussiness rules and a redeser in accordance with the concept of [ducks](https://github.com/erikras/ducks-modular-redux).
+Let's describe the essence of Todo — its constants, actions, business rules and a redeser in accordance with the concept of [ducks](https://github.com/erikras/ducks-modular-redux).
 
 `./ducks/todo.js`
 
 ```js
 import { sendTodo } from 'src/services/api'
-import { onAction } from'@budarin/redux-bussiness-logic-middleare';
+import { onAction } from'@budarin/redux-business-logic-middleare';
 
 const SET_ERROR = 'TODO/SET_ERROR';
 export const ADD_TODO = 'TODO/ADD_TODO';
@@ -41,7 +41,7 @@ export const addTodo = ( todo ) => ({
     payload: todo 
 });
 
-// our bussiness rule
+// our business rule
 export const addTodoMiddleware = async (store, next, action) => {
     // call the API method to send todo to the server
     try {
@@ -54,7 +54,7 @@ export const addTodoMiddleware = async (store, next, action) => {
     return next(action);
 }
 
-// let's add the bussiness rule
+// let's add the business rule
 onAction(ADD_TODO, addTodoMiddleware)
 
 
@@ -77,7 +77,7 @@ Add midleware to stores middlewares
 ```js
 import todoReducer from '../ducks/todo.js'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { bussinesLogicMiddleware } from '@budarin/redux-bussiness-logic-middleare';
+import { bussinesLogicMiddleware } from '@budarin/redux-business-logic-middleare';
 
 const reducers = combineReducers(
     ...
@@ -96,14 +96,14 @@ To remove bussines-rule from processing
 
 ```js
 import { ADD_TODO } from '../ducks/todo.js'
-import { offAction } from '@budarin/redux-bussiness-logic-middleare';
+import { offAction } from '@budarin/redux-business-logic-middleare';
 
 offAction(ADD_TODO);
 ```
 To remove all bussines-rules from processing
 
 ```js
-import { removeAllbussinessRules } from '@budarin/redux-bussiness-logic-middleare';
+import { removeAllbusinessRules } from '@budarin/redux-business-logic-middleare';
 
-removeAllbussinessRules();
+removeAllbusinessRules();
 ```
